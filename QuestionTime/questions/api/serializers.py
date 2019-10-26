@@ -36,7 +36,7 @@ class QuestionSerializer(serializers.ModelSerializer):
         exclude = ['updated_at']
 
     def get_created_at(self, instance):
-        return instance.created_at.strftime('%B %d %Y')
+        return instance.created_at.strftime('%B %d %Y') # October 26 2019
 
     def get_answers_count(self, instance):
         return instance.answers.count()

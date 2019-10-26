@@ -22,6 +22,8 @@ class Answer(models.Model):
     question = models.ForeignKey(Question,
                                  on_delete=models.CASCADE,
                                  related_name='answers')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               on_delete=models.CASCADE)
     voters = models.ManyToManyField(settings.AUTH_USER_MODEL,
                                     related_name='votes')
 
