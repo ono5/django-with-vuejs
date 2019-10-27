@@ -69,7 +69,7 @@ class AnswerLikeAPIView(APIView):
 
     def post(self, request, pk):
         answer = get_object_or_404(Answer, pk=pk)
-        user = request.user
+        user =  request.user
 
         answer.voters.add(user)
         answer.save()
