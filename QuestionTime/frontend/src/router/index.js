@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Example from "../views/Example.vue";
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,11 @@ const routes = [
     path: "/",
     name: "home",
     component: Home
+  },
+  {
+    path: "/example",
+    name: "example",
+    component: Example
   },
   {
     path: "/about",
@@ -23,7 +29,8 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
-  base: process.env.BASE_URL,
+  // localhost:8000/http:/0.0.0.0:8000/aboutになってしまう
+  // base: process.env.BASE_URL,
   routes
 });
 
