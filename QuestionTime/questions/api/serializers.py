@@ -6,7 +6,7 @@ from questions.models import Answer, Question
 class AnswerSerializer(serializers.ModelSerializer):
     author = serializers.StringRelatedField(read_only=True)
     created_at = serializers.SerializerMethodField()
-    liked_count = serializers.SerializerMethodField()
+    likes_count = serializers.SerializerMethodField()
     user_has_voted = serializers.SerializerMethodField()
 
     class Meta:
@@ -16,7 +16,7 @@ class AnswerSerializer(serializers.ModelSerializer):
     def get_created_at(self, instance):
         return instance.created_at.strftime('%B %d, %Y')
 
-    def get_liked_count(self, instance):
+    def get_likes_count(self, instance):
         return instance.voters.count()
 
     def get_user_has_voted(self, instance):
