@@ -1,5 +1,33 @@
 # django-with-vuejs
 
+## Vue js
+```bash
+vue create frontend
+
+
+Vue CLI v3.7.0
+┌───────────────────────────┐
+│  Update available: 4.0.5  │
+└───────────────────────────┘
+? Please pick a preset: Manually select features
+? Check the features needed for your project: Babel, Router, Linter
+? Use history mode for router? (Requires proper server setup for index fallback in production) Yes
+? Pick a linter / formatter config: Prettier
+? Pick additional lint features: (Press <space> to select, <a> to toggle all, <i> to invert selection)Lint on save
+? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? In package.json
+? Save this as a preset for future projects? No
+
+ $ cd frontend
+ $ npm run serve
+```
+
+```bash
+vue ui
+```
+
+```bash
+django-webpack-loader==0.6.0
+```
 
 ## Add signals
 ```bash
