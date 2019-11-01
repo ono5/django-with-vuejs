@@ -6,16 +6,23 @@
                 <span class="author-name">{{ question.author }}</span>
             </p>
             <p>{{ question.created_at }}</p>
+        <hr>
+        </div>
+        <div class="container">
+            <AnswerComponent
+                v-for="(answer, index) in answers"
+                :answer="answer"
+                :key="index"
+            />
         </div>
     </div>
 </template>
 
 <script>
-import { apiService } from "../common/api.service.js";
+import { apiService } from "@/common/api.service.js";
+import AnswerComponent from "@/components/Answer.vue";
 export default {
-    setPageTitle(title) {
-        document.title = title;
-    },
+
     name: "Question",
     props: {
         slug: {
@@ -23,9 +30,13 @@ export default {
             required: true
         }
     },
+    components: {
+        AnswerComponent
+    },
     data() {
         return {
-            question: {}
+            question: {},
+            answers: []
         }
     },
     methods: {
@@ -34,13 +45,19 @@ export default {
             apiService(endpoint)
                 .then(data => {
                     this.question = data;
-                    this.setPageTitle(data.content);
                 })
-        }
+        },
+        getQuestionsAnswers() {
+            let endpoint = `/api/questions/${this.slug}/answers/`;
+            apiService(endpoint)
+                .then(data => {
+                    this.answers = data.results;
+                })
+        },
     },
     created() {
         this.getQuestionData();
-        document.title = "QuestionTime";
+        this.getQuestionsAnswers();
     }
 }
 </script>
